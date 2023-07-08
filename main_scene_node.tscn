@@ -1,18 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsodcaghps1c0"]
+[gd_scene load_steps=5 format=3 uid="uid://dsodcaghps1c0"]
 
 [ext_resource type="PackedScene" uid="uid://b2ke2i1fa6m3k" path="res://start_menu/start_menu.tscn" id="1_nftdd"]
-[ext_resource type="Script" path="res://label.gd" id="2_1vu12"]
+[ext_resource type="Script" path="res://main_scene_node.gd" id="1_uwutl"]
+[ext_resource type="PackedScene" uid="uid://csakd5xi2rakc" path="res://world/world.tscn" id="3_63ulo"]
+[ext_resource type="PackedScene" uid="uid://kqsvu0bvql1e" path="res://in_world_ui/in_world_ui.tscn" id="5_gj885"]
 
 [node name="MainSceneNode" type="Node"]
+script = ExtResource("1_uwutl")
 
-[node name="StartMenu" parent="." instance=ExtResource("1_nftdd")]
+[node name="World" parent="." instance=ExtResource("3_63ulo")]
+process_mode = 1
+visible = false
 
-[node name="Label" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 40)
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_1vu12")
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StartMenu" parent="HUD" instance=ExtResource("1_nftdd")]
+
+[node name="InWorldUI" parent="HUD" instance=ExtResource("5_gj885")]
+visible = false
+
+[connection signal="quit" from="HUD/StartMenu" to="." method="_on_start_menu_quit"]
+[connection signal="start" from="HUD/StartMenu" to="." method="_on_start_menu_start"]
+[connection signal="exit" from="HUD/InWorldUI" to="." method="_on_in_world_ui_exit"]
