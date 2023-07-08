@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsodcaghps1c0"]
+
+[ext_resource type="PackedScene" uid="uid://b2ke2i1fa6m3k" path="res://start_menu/start_menu.tscn" id="1_nftdd"]
+[ext_resource type="Script" path="res://label.gd" id="2_1vu12"]
+
+[node name="MainSceneNode" type="Node"]
+
+[node name="StartMenu" parent="." instance=ExtResource("1_nftdd")]
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_1vu12")
