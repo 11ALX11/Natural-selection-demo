@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2jeuv120krog"]
+
+[ext_resource type="Script" path="res://world/mob/mob.gd" id="1_av3xh"]
+[ext_resource type="Texture2D" uid="uid://br2br3tg6r5dp" path="res://icon.svg" id="1_oe53x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8n1sr"]
+radius = 5.0
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+visible = false
+collision_mask = 0
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource("1_av3xh")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8n1sr")
+disabled = true
+debug_color = Color(1, 0, 0.0980392, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("1_oe53x")
