@@ -13,6 +13,7 @@ var random_factor: float # Max px/second change in mutation
 var velocity: Vector2 # In px/second
 var lifespan: float
 var duplicates: int = 0
+var time_for_duplication: float
 
 
 func _ready():
@@ -20,10 +21,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += velocity * delta
+	linear_velocity = velocity
 	lifespan -= delta
 	
-	if (lifespan <= max_lifespan/2 && duplicates == 0):
+	if (lifespan <= time_for_duplication && duplicates == 0):
+		duplicate_mob()
+	
+	if (lifespan <= time_for_duplication/2 && duplicates == 1):
 		duplicate_mob()
 	
 	if (lifespan < 0):
@@ -32,6 +36,8 @@ func _process(delta):
 
 func spawn(spawn_pos: Vector2, parent_vel: Vector2):
 	lifespan = max_lifespan
+	time_for_duplication = randf_range(max_lifespan/4, 3*max_lifespan/4)
+	get_node("Sprite2D").rotation = randf_range(0, PI/2)
 	
 	var velocity_x = parent_vel.x
 	var velocity_y = parent_vel.y
@@ -42,13 +48,14 @@ func spawn(spawn_pos: Vector2, parent_vel: Vector2):
 	
 	velocity = Vector2(velocity_x, velocity_y)
 	position = spawn_pos
+	linear_velocity = velocity
 	
 	$CollisionShape2D.set_deferred("disabled", false)
 	show()
 
 
 func die():
-	duplicate_mob()
+	died.emit()
 	queue_free()
 
 

@@ -6,10 +6,10 @@ extends Node
 
 @export var mob_scene: PackedScene
 
-var max_mobs = 10000
+var max_mobs = 1000
 var max_lifespan: float = 10.0 # In seconds
 var mutation_chance: float = 0.50
-var random_factor: float = 50 # Max px/second change in mutation
+var random_factor: float = 20 # Max px/second change in mutation
 
 var mobs_count = 0
 
@@ -34,6 +34,7 @@ func _on_in_world_ui_exit():
 
 
 func start_demo():
+	mobs_count = 0
 	spawn_mob($World.life_zone.position, Vector2(10, 10))
 	spawn_mob($World.life_zone.position, Vector2(10, 0))
 	spawn_mob($World.life_zone.position, Vector2(10, -10))
@@ -51,11 +52,8 @@ func clear_mobs():
 	# No real need to change text, since 8 will spawn at first frame, changing it to 8
 
 
-func spawn_mob(parent_pos, parent_vel):
-	if mobs_count < max_mobs:
-		mobs_count += 1
-		get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
-		
+func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
+	if (mobs_count < max_mobs && abs(parent_pos.distance_to($World.life_zone.position)) < 400):
 		var mob = mob_scene.instantiate()
 		
 		mob.spawn_position = parent_pos
@@ -67,11 +65,13 @@ func spawn_mob(parent_pos, parent_vel):
 		mob.connect("died", _on_mob_died)
 		mob.connect("mob_duplicated", spawn_mob)
 		
-		$World.add_child(mob)
+		$World.add_child.call_deferred(mob)
+		mobs_count = get_tree().get_nodes_in_group("mobs").size()
+		get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 
 
 func _on_mob_died():
-	mobs_count -= 1
+	mobs_count = get_tree().get_nodes_in_group("mobs").size()
 	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 
 
@@ -90,3 +90,8 @@ func _on_in_world_ui_random_factor_change(value):
 func _on_in_world_ui_reset():
 	clear_mobs()
 	start_demo()
+
+
+func _on_world_life_zone_exit(body):
+	if body.has_method("die"):
+		body.die()

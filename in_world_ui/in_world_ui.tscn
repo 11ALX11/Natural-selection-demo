@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://kqsvu0bvql1e"]
+[gd_scene load_steps=6 format=3 uid="uid://kqsvu0bvql1e"]
 
 [ext_resource type="Script" path="res://in_world_ui/in_world_ui.gd" id="1_kf3hl"]
 
@@ -7,6 +7,12 @@ action = &"ui_cancel"
 
 [sub_resource type="Shortcut" id="Shortcut_3fhqi"]
 events = [SubResource("InputEventAction_i1nxe")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_6x17g"]
+action = &"ui_refresh"
+
+[sub_resource type="Shortcut" id="Shortcut_35q56"]
+events = [SubResource("InputEventAction_6x17g")]
 
 [node name="InWorldUI" type="Control"]
 layout_mode = 3
@@ -18,15 +24,22 @@ grow_vertical = 2
 focus_mode = 1
 script = ExtResource("1_kf3hl")
 
-[node name="ReturnToMenuButton" type="Button" parent="."]
-custom_minimum_size = Vector2(130, 50)
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -130.0
+offset_left = -224.0
 offset_bottom = 50.0
 grow_horizontal = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ReturnToMenuButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
 focus_mode = 0
 shortcut = SubResource("Shortcut_3fhqi")
 text = "Back"
@@ -70,15 +83,16 @@ layout_mode = 2
 [node name="MaxMobs" type="Label" parent="RightBottomCorner/MarginContainer2/MaxMobsGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Max mobs: 10000"
+text = "Max mobs: 1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer2/MaxMobsGroup"]
 layout_mode = 2
-min_value = 1.0
-max_value = 100000.0
-value = 10000.0
+min_value = 200.0
+max_value = 40000.0
+step = 200.0
+value = 1000.0
 rounded = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="RightBottomCorner"]
@@ -141,14 +155,14 @@ layout_mode = 2
 [node name="RandomFactor" type="Label" parent="RightBottomCorner/MarginContainer5/RandomFactorGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Random factor: 50"
+text = "Random factor: 20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer5/RandomFactorGroup"]
 layout_mode = 2
-max_value = 1000.0
-value = 50.0
+max_value = 300.0
+value = 20.0
 
 [node name="MarginContainer6" type="MarginContainer" parent="RightBottomCorner"]
 layout_mode = 2
@@ -161,9 +175,10 @@ theme_override_constants/margin_bottom = 12
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 focus_mode = 0
+shortcut = SubResource("Shortcut_35q56")
 text = "Reset simulation"
 
-[connection signal="pressed" from="ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="value_changed" from="RightBottomCorner/MarginContainer2/MaxMobsGroup/HSlider" to="." method="_on_max_mobs_h_slider_value_changed"]
 [connection signal="value_changed" from="RightBottomCorner/MarginContainer3/LifespanGroup/HSlider" to="." method="_on_lifespan_h_slider_value_changed"]
 [connection signal="value_changed" from="RightBottomCorner/MarginContainer4/MutationChanceGroup/HSlider" to="." method="_on_mutation_chance_h_slider_value_changed"]
