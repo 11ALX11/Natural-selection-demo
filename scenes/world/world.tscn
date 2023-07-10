@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://csakd5xi2rakc"]
+[gd_scene load_steps=5 format=3 uid="uid://csakd5xi2rakc"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_8jqv5"]
 [ext_resource type="Texture2D" uid="uid://cajjovlwq7wdp" path="res://art/circle.svg" id="2_ihd11"]
+[ext_resource type="Texture2D" uid="uid://bmtkicrqvvvno" path="res://art/background.svg" id="2_ir575"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms33t"]
 radius = 396.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_8jqv5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(4000, 4000)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_ir575")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

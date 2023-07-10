@@ -18,6 +18,7 @@ func _on_start_menu_start():
 	start_menu.hide()
 	in_world_ui.show()
 	$World.show()
+	$World/ParallaxBackground.show()
 	
 	start_demo()
 
@@ -26,6 +27,7 @@ func _on_start_menu_quit():
 
 
 func _on_in_world_ui_exit():
+	$World/ParallaxBackground.hide()
 	$World.hide()
 	in_world_ui.hide()
 	start_menu.show()
@@ -34,7 +36,6 @@ func _on_in_world_ui_exit():
 
 
 func start_demo():
-	mobs_count = 0
 	spawn_mob($World.life_zone.position, Vector2(10, 10))
 	spawn_mob($World.life_zone.position, Vector2(10, 0))
 	spawn_mob($World.life_zone.position, Vector2(10, -10))
@@ -43,17 +44,24 @@ func start_demo():
 	spawn_mob($World.life_zone.position, Vector2(-10, 0))
 	spawn_mob($World.life_zone.position, Vector2(-10, 10))
 	spawn_mob($World.life_zone.position, Vector2(0, 10))
+	
+	mobs_count = 8
+	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 
 func clear_mobs():
 	# Delete mobs
 	get_tree().call_group("mobs", "queue_free")
 	# Also reset counter
 	mobs_count = 0
-	# No real need to change text, since 8 will spawn at first frame, changing it to 8
+	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 
 
 func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
-	if (mobs_count < max_mobs && abs(parent_pos.distance_to($World.life_zone.position)) < 400):
+	var circle_radius = get_node("World/LifeZone/CollisionShape2D").shape.radius
+	var dist_from_centrer = abs(parent_pos.distance_to($World.life_zone.position))
+	var is_outside = dist_from_centrer >= circle_radius
+	
+	if (mobs_count < max_mobs && not is_outside):
 		var mob = mob_scene.instantiate()
 		
 		mob.spawn_position = parent_pos

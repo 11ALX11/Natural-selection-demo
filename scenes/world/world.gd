@@ -4,11 +4,11 @@ extends Node2D
 signal life_zone_exit(body)
 
 
-var life_zone: Area2D
+@onready var life_zone: Area2D = $LifeZone
 
 
 func _ready():
-	life_zone = $LifeZone
+	$ParallaxBackground.hide()
 
 
 func _on_life_zone_body_exited(body):
