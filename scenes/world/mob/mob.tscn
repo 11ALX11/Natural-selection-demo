@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2jeuv120krog"]
 
-[ext_resource type="Script" path="res://world/mob/mob.gd" id="1_av3xh"]
+[ext_resource type="Script" path="res://scenes/world/mob/mob.gd" id="1_av3xh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8n1sr"]
 radius = 5.0

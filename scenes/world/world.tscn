@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://csakd5xi2rakc"]
 
-[ext_resource type="Texture2D" uid="uid://cajjovlwq7wdp" path="res://art/circle.svg" id="1_aygv7"]
-[ext_resource type="Script" path="res://world/world.gd" id="1_vuq7j"]
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_8jqv5"]
+[ext_resource type="Texture2D" uid="uid://cajjovlwq7wdp" path="res://art/circle.svg" id="2_ihd11"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms33t"]
 radius = 396.0
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_vuq7j")
+script = ExtResource("1_8jqv5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -21,6 +21,6 @@ debug_color = Color(0.603922, 0.505882, 0, 0.0823529)
 
 [node name="Sprite2D" type="Sprite2D" parent="LifeZone"]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_aygv7")
+texture = ExtResource("2_ihd11")
 
 [connection signal="body_exited" from="LifeZone" to="." method="_on_life_zone_body_exited"]
