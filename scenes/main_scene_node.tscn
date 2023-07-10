@@ -28,6 +28,7 @@ visible = false
 [connection signal="start" from="HUD/StartMenu" to="." method="_on_start_menu_start"]
 [connection signal="circle_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_change"]
 [connection signal="circle_random_factor" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_random_factor"]
+[connection signal="circle_scale" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_scale"]
 [connection signal="circle_velocity_time_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_velocity_time_change"]
 [connection signal="exit" from="HUD/InWorldUI" to="." method="_on_in_world_ui_exit"]
 [connection signal="lifespan_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_lifespan_change"]

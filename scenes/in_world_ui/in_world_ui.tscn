@@ -111,6 +111,31 @@ value = 10.0
 exp_edit = true
 rounded = true
 
+[node name="MarginContainer5" type="MarginContainer" parent="LeftControlGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CircleRadiusGroup" type="VBoxContainer" parent="LeftControlGroup/MarginContainer5"]
+layout_mode = 2
+
+[node name="CircleRadius" type="Label" parent="LeftControlGroup/MarginContainer5/CircleRadiusGroup"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Circle radius scale: $"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSlider" type="HSlider" parent="LeftControlGroup/MarginContainer5/CircleRadiusGroup"]
+layout_mode = 2
+min_value = 0.2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
 [node name="MarginContainer3" type="MarginContainer" parent="LeftControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
@@ -281,6 +306,7 @@ text = "Reset simulation"
 [connection signal="pressed" from="MarginContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="value_changed" from="LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider" to="." method="_on_circle_velocity_time_change_h_slider_value_changed"]
 [connection signal="value_changed" from="LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider" to="." method="_on_circle_random_factor_h_slider_value_changed"]
+[connection signal="value_changed" from="LeftControlGroup/MarginContainer5/CircleRadiusGroup/HSlider" to="." method="_on_circle_radius_h_slider_value_changed"]
 [connection signal="pressed" from="LeftControlGroup/MarginContainer3/ChangeCircleVelocity" to="." method="_on_change_circle_velocity_pressed"]
 [connection signal="value_changed" from="RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider" to="." method="_on_max_mobs_h_slider_value_changed"]
 [connection signal="value_changed" from="RightControlGroup/MarginContainer3/LifespanGroup/HSlider" to="." method="_on_lifespan_h_slider_value_changed"]

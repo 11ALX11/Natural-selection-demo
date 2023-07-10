@@ -7,10 +7,11 @@ extends Node
 @export var mutation_chance: float = 0.05
 @export var random_factor: float = 5 # Max px/second change in mutation
 
-var mobs_count = 0
+var mobs_count: int = 0
 
 @export var circle_velocity_change_time: int = 30 # In seconds
 @export var circle_random_factor: int = 10 # In px/second
+@export var circle_scale: float = 0.8 # Lifezone scale value
 
 func _ready():
 	$HUD/StartMenu.grab_focus()
@@ -37,6 +38,10 @@ func _ready():
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(circle_random_factor) + " px/s"
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider.value = circle_random_factor
 	$World.circle_random_factor = circle_random_factor
+	
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = "Circle radius scale: " + str(circle_scale)
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/HSlider.value = circle_scale
+	$World/LifeZone.scale = Vector2(circle_scale, circle_scale)
 
 func _on_start_menu_start():
 	$HUD/StartMenu.hide()
@@ -82,7 +87,7 @@ func start_demo():
 
 
 func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
-	var circle_radius = get_node("World/LifeZone/CollisionShape2D").shape.radius
+	var circle_radius = get_node("World/LifeZone/CollisionShape2D").shape.radius * circle_scale
 	var dist_from_centrer_sqr = parent_pos.distance_squared_to($World/LifeZone.position)
 	var is_outside = dist_from_centrer_sqr >= (circle_radius*circle_radius)
 	
@@ -132,6 +137,10 @@ func _on_in_world_ui_circle_random_factor(value):
 func _on_in_world_ui_circle_velocity_time_change(value):
 	circle_velocity_change_time = value
 	$World.circle_velocity_change_time = value
+
+func _on_in_world_ui_circle_scale(value):
+	circle_scale = value
+	$World/LifeZone.scale = Vector2(value, value)
 
 
 func _on_in_world_ui_reset():

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bmtkicrqvvvno" path="res://art/background.svg" id="2_ir575"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms33t"]
-radius = 396.0
+radius = 492.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_8jqv5")
@@ -23,6 +23,7 @@ texture = ExtResource("2_ir575")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="LifeZone" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
 priority = 1.0
 metadata/_edit_group_ = true
 
@@ -31,7 +32,6 @@ shape = SubResource("CircleShape2D_ms33t")
 debug_color = Color(0.603922, 0.505882, 0, 0.0823529)
 
 [node name="Sprite2D" type="Sprite2D" parent="LifeZone"]
-scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_ihd11")
 
 [node name="Timer" type="Timer" parent="LifeZone"]

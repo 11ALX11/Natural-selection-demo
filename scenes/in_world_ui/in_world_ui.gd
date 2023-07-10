@@ -12,10 +12,11 @@ signal random_factor_change(value: int)
 
 signal circle_velocity_time_change(value: int)
 signal circle_random_factor(value: int)
+signal circle_scale(value: float)
 
 
 var seconds: float = 0
-var circle_velocity_change_time = 30
+var circle_velocity_change_time: int = 30
 
 
 func _process(delta):
@@ -61,3 +62,7 @@ func _on_circle_velocity_time_change_h_slider_value_changed(value):
 func _on_circle_random_factor_h_slider_value_changed(value):
 	$LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(value) + " px/s"
 	circle_random_factor.emit(value)
+
+func _on_circle_radius_h_slider_value_changed(value):
+	$LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = "Circle radius scale: " + str(value)
+	circle_scale.emit(value)
