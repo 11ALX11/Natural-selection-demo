@@ -24,7 +24,7 @@ func _on_max_mobs_h_slider_value_changed(value):
 
 
 func _on_lifespan_h_slider_value_changed(value):
-	get_node("RightBottomCorner/MarginContainer3/LifespanGroup/Lifespan").text = "Lifespan: " + str(value)
+	get_node("RightBottomCorner/MarginContainer3/LifespanGroup/Lifespan").text = "Lifespan: " + str(value) + " s"
 	lifespan_change.emit(value)
 
 
@@ -34,5 +34,5 @@ func _on_mutation_chance_h_slider_value_changed(value):
 
 
 func _on_random_factor_h_slider_value_changed(value):
-	get_node("RightBottomCorner/MarginContainer5/RandomFactorGroup/RandomFactor").text = "Random factor: " + str(value)
+	get_node("RightBottomCorner/MarginContainer5/RandomFactorGroup/RandomFactor").text = "Random factor: " + str(value) + " px/s"
 	random_factor_change.emit(value)

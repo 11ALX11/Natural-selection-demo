@@ -7,9 +7,9 @@ extends Node
 @export var mob_scene: PackedScene
 
 var max_mobs = 1000
-var max_lifespan: float = 10.0 # In seconds
-var mutation_chance: float = 0.50
-var random_factor: float = 20 # Max px/second change in mutation
+var max_lifespan: float = 5.0 # In seconds
+var mutation_chance: float = 0.05
+var random_factor: float = 5 # Max px/second change in mutation
 
 var mobs_count = 0
 
