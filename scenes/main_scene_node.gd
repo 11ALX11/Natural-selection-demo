@@ -1,22 +1,26 @@
 extends Node
 
-
-@onready var start_menu = get_node("HUD/StartMenu")
-@onready var in_world_ui = get_node("HUD/InWorldUI")
-
 @export var mob_scene: PackedScene
 
-var max_mobs = 1000
-var max_lifespan: float = 5.0 # In seconds
-var mutation_chance: float = 0.05
-var random_factor: float = 5 # Max px/second change in mutation
+@export var max_mobs = 1000
+@export var max_lifespan: float = 5.0 # In seconds
+@export var mutation_chance: float = 0.05
+@export var random_factor: float = 5 # Max px/second change in mutation
 
 var mobs_count = 0
 
+@export var circle_velocity_change_time: int = 30 # In seconds
+@export var circle_random_factor: int = 10 # In px/second
+
+func _ready():
+	$HUD/StartMenu.grab_focus()
+	# ToDo export vals...
 
 func _on_start_menu_start():
-	start_menu.hide()
-	in_world_ui.show()
+	$HUD/StartMenu.hide()
+	$HUD/InWorldUI.show()
+	$HUD/InWorldUI.grab_focus()
+	
 	$World.show()
 	$World/ParallaxBackground.show()
 	
@@ -29,37 +33,35 @@ func _on_start_menu_quit():
 func _on_in_world_ui_exit():
 	$World/ParallaxBackground.hide()
 	$World.hide()
-	in_world_ui.hide()
-	start_menu.show()
+	$World.reset()
 	
-	clear_mobs()
+	$HUD/InWorldUI.hide()
+	$HUD/StartMenu.show()
+	$HUD/StartMenu.grab_focus()
 
 
 func start_demo():
-	spawn_mob($World.life_zone.position, Vector2(10, 10))
-	spawn_mob($World.life_zone.position, Vector2(10, 0))
-	spawn_mob($World.life_zone.position, Vector2(10, -10))
-	spawn_mob($World.life_zone.position, Vector2(0, -10))
-	spawn_mob($World.life_zone.position, Vector2(-10, -10))
-	spawn_mob($World.life_zone.position, Vector2(-10, 0))
-	spawn_mob($World.life_zone.position, Vector2(-10, 10))
-	spawn_mob($World.life_zone.position, Vector2(0, 10))
+	var starter_pos = $World/LifeZone.position
+	
+	spawn_mob(starter_pos, Vector2(10, 10))
+	spawn_mob(starter_pos, Vector2(10, 0))
+	spawn_mob(starter_pos, Vector2(10, -10))
+	spawn_mob(starter_pos, Vector2(0, -10))
+	spawn_mob(starter_pos, Vector2(-10, -10))
+	spawn_mob(starter_pos, Vector2(-10, 0))
+	spawn_mob(starter_pos, Vector2(-10, 10))
+	spawn_mob(starter_pos, Vector2(0, 10))
 	
 	mobs_count = 8
-	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
-
-func clear_mobs():
-	# Delete mobs
-	get_tree().call_group("mobs", "queue_free")
-	# Also reset counter
-	mobs_count = 0
-	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+	get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+	
+	$World.launch_circle()
 
 
 func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
 	var circle_radius = get_node("World/LifeZone/CollisionShape2D").shape.radius
-	var dist_from_centrer = abs(parent_pos.distance_to($World.life_zone.position))
-	var is_outside = dist_from_centrer >= circle_radius
+	var dist_from_centrer_sqr = parent_pos.distance_squared_to($World/LifeZone.position)
+	var is_outside = dist_from_centrer_sqr >= (circle_radius*circle_radius)
 	
 	if (mobs_count < max_mobs && not is_outside):
 		var mob = mob_scene.instantiate()
@@ -75,12 +77,17 @@ func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
 		
 		$World.add_child.call_deferred(mob)
 		mobs_count = get_tree().get_nodes_in_group("mobs").size()
-		get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+		get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 
 
 func _on_mob_died():
 	mobs_count = get_tree().get_nodes_in_group("mobs").size()
-	get_node("HUD/InWorldUI/RightBottomCorner/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+	get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+
+
+func _on_world_life_zone_exit(body):
+	if body.has_method("die"):
+		body.die()
 
 
 func _on_in_world_ui_lifespan_change(value):
@@ -95,11 +102,18 @@ func _on_in_world_ui_mutation_chance_change(value):
 func _on_in_world_ui_random_factor_change(value):
 	random_factor = value
 
+func _on_in_world_ui_circle_random_factor(value):
+	$World.circle_random_factor = value
+
+func _on_in_world_ui_circle_velocity_time_change(value):
+	$World.circle_velocity_change_time = value
+
+
 func _on_in_world_ui_reset():
-	clear_mobs()
+	$World.reset()
 	start_demo()
 
+func _on_in_world_ui_circle_change():
+	$World.change_circle_velocity()
+	$World/LifeZone/Timer.start()
 
-func _on_world_life_zone_exit(body):
-	if body.has_method("die"):
-		body.die()

@@ -34,4 +34,8 @@ debug_color = Color(0.603922, 0.505882, 0, 0.0823529)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_ihd11")
 
+[node name="Timer" type="Timer" parent="LifeZone"]
+wait_time = 30.0
+
 [connection signal="body_exited" from="LifeZone" to="." method="_on_life_zone_body_exited"]
+[connection signal="timeout" from="LifeZone/Timer" to="." method="_on_life_zone_timer_timeout"]

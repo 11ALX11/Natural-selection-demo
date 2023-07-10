@@ -21,8 +21,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 1
+focus_mode = 2
 script = ExtResource("1_kf3hl")
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,6 +37,7 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
+metadata/_edit_group_ = true
 
 [node name="ReturnToMenuButton" type="Button" parent="MarginContainer"]
 custom_minimum_size = Vector2(130, 50)
@@ -44,136 +46,218 @@ focus_mode = 0
 shortcut = SubResource("Shortcut_3fhqi")
 text = "Back"
 
-[node name="RightBottomCorner" type="VBoxContainer" parent="."]
+[node name="LeftControlGroup" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -224.0
-offset_top = -466.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -137.0
+offset_right = 224.0
+offset_bottom = 137.0
+grow_vertical = 2
+metadata/_edit_group_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="MobsCount" type="Label" parent="RightBottomCorner/MarginContainer"]
+[node name="CircleVelocityTimeChangeGroup" type="VBoxContainer" parent="LeftControlGroup/MarginContainer"]
+layout_mode = 2
+
+[node name="CircleVelocityTimeChange" type="Label" parent="LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Circle velocity change
+every 30 s"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSlider" type="HSlider" parent="LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup"]
+layout_mode = 2
+min_value = 5.0
+max_value = 180.0
+value = 30.0
+exp_edit = true
+rounded = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="LeftControlGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CircleRandomFactorGroup" type="VBoxContainer" parent="LeftControlGroup/MarginContainer2"]
+layout_mode = 2
+
+[node name="CircleRandomFactor" type="Label" parent="LeftControlGroup/MarginContainer2/CircleRandomFactorGroup"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Circle random factor:
+10 px/s"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSlider" type="HSlider" parent="LeftControlGroup/MarginContainer2/CircleRandomFactorGroup"]
+layout_mode = 2
+min_value = 1.0
+max_value = 300.0
+value = 10.0
+exp_edit = true
+rounded = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="LeftControlGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ChangeCircleVelocity" type="Button" parent="LeftControlGroup/MarginContainer3"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+focus_mode = 0
+text = "Change circle velocity"
+
+[node name="RightControlGroup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -272.0
+offset_bottom = 272.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="RightControlGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="MobsCount" type="Label" parent="RightControlGroup/MarginContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Mobs: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer2" type="MarginContainer" parent="RightControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="MaxMobsGroup" type="VBoxContainer" parent="RightBottomCorner/MarginContainer2"]
+[node name="MaxMobsGroup" type="VBoxContainer" parent="RightControlGroup/MarginContainer2"]
 layout_mode = 2
 
-[node name="MaxMobs" type="Label" parent="RightBottomCorner/MarginContainer2/MaxMobsGroup"]
+[node name="MaxMobs" type="Label" parent="RightControlGroup/MarginContainer2/MaxMobsGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Max mobs: 1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer2/MaxMobsGroup"]
+[node name="HSlider" type="HSlider" parent="RightControlGroup/MarginContainer2/MaxMobsGroup"]
 layout_mode = 2
 min_value = 200.0
 max_value = 40000.0
 step = 200.0
 value = 1000.0
 exp_edit = true
+rounded = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer3" type="MarginContainer" parent="RightControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="LifespanGroup" type="VBoxContainer" parent="RightBottomCorner/MarginContainer3"]
+[node name="LifespanGroup" type="VBoxContainer" parent="RightControlGroup/MarginContainer3"]
 layout_mode = 2
 
-[node name="Lifespan" type="Label" parent="RightBottomCorner/MarginContainer3/LifespanGroup"]
+[node name="Lifespan" type="Label" parent="RightControlGroup/MarginContainer3/LifespanGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Lifespan: 5 s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer3/LifespanGroup"]
+[node name="HSlider" type="HSlider" parent="RightControlGroup/MarginContainer3/LifespanGroup"]
 layout_mode = 2
 min_value = 1.0
 max_value = 20.0
 step = 0.1
 value = 5.0
 
-[node name="MarginContainer4" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer4" type="MarginContainer" parent="RightControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="MutationChanceGroup" type="VBoxContainer" parent="RightBottomCorner/MarginContainer4"]
+[node name="MutationChanceGroup" type="VBoxContainer" parent="RightControlGroup/MarginContainer4"]
 layout_mode = 2
 
-[node name="MutationChance" type="Label" parent="RightBottomCorner/MarginContainer4/MutationChanceGroup"]
+[node name="MutationChance" type="Label" parent="RightControlGroup/MarginContainer4/MutationChanceGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Mutation chance: 0.05"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer4/MutationChanceGroup"]
+[node name="HSlider" type="HSlider" parent="RightControlGroup/MarginContainer4/MutationChanceGroup"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.05
 
-[node name="MarginContainer5" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer5" type="MarginContainer" parent="RightControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="RandomFactorGroup" type="VBoxContainer" parent="RightBottomCorner/MarginContainer5"]
+[node name="RandomFactorGroup" type="VBoxContainer" parent="RightControlGroup/MarginContainer5"]
 layout_mode = 2
 
-[node name="RandomFactor" type="Label" parent="RightBottomCorner/MarginContainer5/RandomFactorGroup"]
+[node name="RandomFactor" type="Label" parent="RightControlGroup/MarginContainer5/RandomFactorGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Random factor: 5 px/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="RightBottomCorner/MarginContainer5/RandomFactorGroup"]
+[node name="HSlider" type="HSlider" parent="RightControlGroup/MarginContainer5/RandomFactorGroup"]
 layout_mode = 2
 min_value = 1.0
 max_value = 300.0
 value = 5.0
 exp_edit = true
+rounded = true
 
-[node name="MarginContainer6" type="MarginContainer" parent="RightBottomCorner"]
+[node name="MarginContainer6" type="MarginContainer" parent="RightControlGroup"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="ResetButton" type="Button" parent="RightBottomCorner/MarginContainer6"]
+[node name="ResetButton" type="Button" parent="RightControlGroup/MarginContainer6"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 focus_mode = 0
@@ -181,8 +265,11 @@ shortcut = SubResource("Shortcut_35q56")
 text = "Reset simulation"
 
 [connection signal="pressed" from="MarginContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
-[connection signal="value_changed" from="RightBottomCorner/MarginContainer2/MaxMobsGroup/HSlider" to="." method="_on_max_mobs_h_slider_value_changed"]
-[connection signal="value_changed" from="RightBottomCorner/MarginContainer3/LifespanGroup/HSlider" to="." method="_on_lifespan_h_slider_value_changed"]
-[connection signal="value_changed" from="RightBottomCorner/MarginContainer4/MutationChanceGroup/HSlider" to="." method="_on_mutation_chance_h_slider_value_changed"]
-[connection signal="value_changed" from="RightBottomCorner/MarginContainer5/RandomFactorGroup/HSlider" to="." method="_on_random_factor_h_slider_value_changed"]
-[connection signal="pressed" from="RightBottomCorner/MarginContainer6/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="value_changed" from="LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider" to="." method="_on_circle_velocity_time_change_h_slider_value_changed"]
+[connection signal="value_changed" from="LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider" to="." method="_on_circle_random_factor_h_slider_value_changed"]
+[connection signal="pressed" from="LeftControlGroup/MarginContainer3/ChangeCircleVelocity" to="." method="_on_change_circle_velocity_pressed"]
+[connection signal="value_changed" from="RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider" to="." method="_on_max_mobs_h_slider_value_changed"]
+[connection signal="value_changed" from="RightControlGroup/MarginContainer3/LifespanGroup/HSlider" to="." method="_on_lifespan_h_slider_value_changed"]
+[connection signal="value_changed" from="RightControlGroup/MarginContainer4/MutationChanceGroup/HSlider" to="." method="_on_mutation_chance_h_slider_value_changed"]
+[connection signal="value_changed" from="RightControlGroup/MarginContainer5/RandomFactorGroup/HSlider" to="." method="_on_random_factor_h_slider_value_changed"]
+[connection signal="pressed" from="RightControlGroup/MarginContainer6/ResetButton" to="." method="_on_reset_button_pressed"]

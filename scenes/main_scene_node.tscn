@@ -13,6 +13,7 @@ mob_scene = ExtResource("5_lda4e")
 [node name="World" parent="." instance=ExtResource("3_63ulo")]
 process_mode = 1
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -24,6 +25,9 @@ visible = false
 [connection signal="life_zone_exit" from="World" to="." method="_on_world_life_zone_exit"]
 [connection signal="quit" from="HUD/StartMenu" to="." method="_on_start_menu_quit"]
 [connection signal="start" from="HUD/StartMenu" to="." method="_on_start_menu_start"]
+[connection signal="circle_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_change"]
+[connection signal="circle_random_factor" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_random_factor"]
+[connection signal="circle_velocity_time_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_circle_velocity_time_change"]
 [connection signal="exit" from="HUD/InWorldUI" to="." method="_on_in_world_ui_exit"]
 [connection signal="lifespan_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_lifespan_change"]
 [connection signal="max_mobs_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_max_mobs_change"]
