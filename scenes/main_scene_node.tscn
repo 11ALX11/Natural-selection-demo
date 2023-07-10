@@ -1,14 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsodcaghps1c0"]
+[gd_scene load_steps=5 format=3 uid="uid://dsodcaghps1c0"]
 
 [ext_resource type="PackedScene" uid="uid://b2ke2i1fa6m3k" path="res://scenes/start_menu/start_menu.tscn" id="1_nftdd"]
 [ext_resource type="Script" path="res://scenes/main_scene_node.gd" id="1_uwutl"]
 [ext_resource type="PackedScene" uid="uid://csakd5xi2rakc" path="res://scenes/world/world.tscn" id="3_63ulo"]
 [ext_resource type="PackedScene" uid="uid://kqsvu0bvql1e" path="res://scenes/in_world_ui/in_world_ui.tscn" id="5_gj885"]
-[ext_resource type="PackedScene" uid="uid://d2jeuv120krog" path="res://scenes/world/mob/mob.tscn" id="5_lda4e"]
 
 [node name="MainSceneNode" type="Node"]
 script = ExtResource("1_uwutl")
-mob_scene = ExtResource("5_lda4e")
 
 [node name="World" parent="." instance=ExtResource("3_63ulo")]
 process_mode = 1
@@ -21,6 +19,9 @@ metadata/_edit_lock_ = true
 
 [node name="InWorldUI" parent="HUD" instance=ExtResource("5_gj885")]
 visible = false
+
+[node name="MobCheckerTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="circle_velocity_changed" from="World" to="." method="reset_circle_progress_bar"]
 [connection signal="life_zone_exit" from="World" to="." method="_on_world_life_zone_exit"]
@@ -36,3 +37,4 @@ visible = false
 [connection signal="mutation_chance_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_mutation_chance_change"]
 [connection signal="random_factor_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_random_factor_change"]
 [connection signal="reset" from="HUD/InWorldUI" to="." method="_on_in_world_ui_reset"]
+[connection signal="timeout" from="MobCheckerTimer" to="." method="_on_mob_checker_timer_timeout"]

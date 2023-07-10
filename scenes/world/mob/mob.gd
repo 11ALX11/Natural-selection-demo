@@ -37,7 +37,7 @@ func _process(delta):
 func spawn(spawn_pos: Vector2, parent_vel: Vector2):
 	lifespan = max_lifespan
 	time_for_duplication = randf_range(max_lifespan/4, 3*max_lifespan/4)
-	get_node("Sprite2D").rotation = randf_range(0, PI/2)
+	get_node("Sprite2D").rotation = randf_range(0, PI/4)
 	
 	var velocity_x = parent_vel.x
 	var velocity_y = parent_vel.y
