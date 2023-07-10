@@ -71,7 +71,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Circle velocity change
-every 30 s"
+every $ s"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -98,7 +98,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Circle random factor:
-10 px/s"
+$ px/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -165,7 +165,7 @@ layout_mode = 2
 [node name="MaxMobs" type="Label" parent="RightControlGroup/MarginContainer2/MaxMobsGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Max mobs: 1000"
+text = "Max mobs: $"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -191,7 +191,7 @@ layout_mode = 2
 [node name="Lifespan" type="Label" parent="RightControlGroup/MarginContainer3/LifespanGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Lifespan: 5 s"
+text = "Lifespan: $ s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -215,7 +215,7 @@ layout_mode = 2
 [node name="MutationChance" type="Label" parent="RightControlGroup/MarginContainer4/MutationChanceGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Mutation chance: 0.05"
+text = "Mutation chance: $"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -238,7 +238,7 @@ layout_mode = 2
 [node name="RandomFactor" type="Label" parent="RightControlGroup/MarginContainer5/RandomFactorGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Random factor: 5 px/s"
+text = "Random factor: $ px/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 

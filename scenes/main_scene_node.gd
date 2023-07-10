@@ -14,7 +14,27 @@ var mobs_count = 0
 
 func _ready():
 	$HUD/StartMenu.grab_focus()
-	# ToDo export vals...
+	
+	# export vals
+	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = "Max mobs: " + str(max_mobs)
+	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider.value = max_mobs
+	
+	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/Lifespan.text = "Lifespan: " + str(max_lifespan) + " s"
+	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/HSlider.value = max_lifespan
+	
+	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance.text = "Mutation chance: " + str(mutation_chance)
+	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/HSlider.value = mutation_chance
+	
+	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor.text = "Random factor: " + str(random_factor) + " px/s"
+	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/HSlider.value = random_factor
+	
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = "Circle velocity change\nevery " + str(circle_velocity_change_time) + " s"
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider.value = circle_velocity_change_time
+	$World.circle_velocity_change_time = circle_velocity_change_time
+	
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(circle_random_factor) + " px/s"
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider.value = circle_random_factor
+	$World.circle_random_factor = circle_random_factor
 
 func _on_start_menu_start():
 	$HUD/StartMenu.hide()
@@ -103,9 +123,11 @@ func _on_in_world_ui_random_factor_change(value):
 	random_factor = value
 
 func _on_in_world_ui_circle_random_factor(value):
+	circle_random_factor = value
 	$World.circle_random_factor = value
 
 func _on_in_world_ui_circle_velocity_time_change(value):
+	circle_velocity_change_time = value
 	$World.circle_velocity_change_time = value
 
 
@@ -115,5 +137,5 @@ func _on_in_world_ui_reset():
 
 func _on_in_world_ui_circle_change():
 	$World.change_circle_velocity()
-	$World/LifeZone/Timer.start()
+	$World/LifeZone/Timer.start(circle_velocity_change_time)
 

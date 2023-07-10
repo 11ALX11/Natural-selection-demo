@@ -16,8 +16,9 @@ func _on_life_zone_body_exited(body):
 
 
 func _process(delta):
-	$LifeZone.position += circle_velocity * delta
-	$Camera2D.position = $LifeZone.position
+	if is_circle_launched:
+		$LifeZone.position += circle_velocity * delta
+		$Camera2D.position = $LifeZone.position
 
 
 func launch_circle():
@@ -45,3 +46,4 @@ func change_circle_velocity():
 
 func _on_life_zone_timer_timeout():
 	change_circle_velocity()
+	$LifeZone/Timer.start(circle_velocity_change_time) # start if changed time
