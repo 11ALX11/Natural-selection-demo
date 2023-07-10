@@ -77,6 +77,7 @@ func start_demo():
 	mobs_count = 8
 	get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
 	
+	reset_circle_progress_bar()
 	$World.launch_circle()
 
 
