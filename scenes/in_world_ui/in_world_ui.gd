@@ -14,6 +14,19 @@ signal circle_velocity_time_change(value: int)
 signal circle_random_factor(value: int)
 
 
+var seconds: float = 0
+var circle_velocity_change_time = 30
+
+
+func _process(delta):
+	if seconds == 0:
+		$LeftControlGroup/MarginContainer4/CircleProgressBar.max_value = circle_velocity_change_time
+	
+	if seconds <= circle_velocity_change_time:
+		seconds += delta
+		$LeftControlGroup/MarginContainer4/CircleProgressBar.value = seconds
+
+
 func _on_return_to_menu_button_pressed():
 	exit.emit()
 

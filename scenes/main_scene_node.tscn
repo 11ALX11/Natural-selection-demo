@@ -22,6 +22,7 @@ metadata/_edit_lock_ = true
 [node name="InWorldUI" parent="HUD" instance=ExtResource("5_gj885")]
 visible = false
 
+[connection signal="circle_velocity_changed" from="World" to="." method="reset_circle_progress_bar"]
 [connection signal="life_zone_exit" from="World" to="." method="_on_world_life_zone_exit"]
 [connection signal="quit" from="HUD/StartMenu" to="." method="_on_start_menu_quit"]
 [connection signal="start" from="HUD/StartMenu" to="." method="_on_start_menu_start"]

@@ -2,6 +2,7 @@ extends Node2D
 
 
 signal life_zone_exit(body)
+signal circle_velocity_changed
 
 
 var circle_velocity_change_time: int = 30 # In seconds
@@ -47,3 +48,4 @@ func change_circle_velocity():
 func _on_life_zone_timer_timeout():
 	change_circle_velocity()
 	$LifeZone/Timer.start(circle_velocity_change_time) # start if changed time
+	circle_velocity_changed.emit()

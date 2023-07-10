@@ -124,6 +124,20 @@ layout_mode = 2
 focus_mode = 0
 text = "Change circle velocity"
 
+[node name="MarginContainer4" type="MarginContainer" parent="LeftControlGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CircleProgressBar" type="ProgressBar" parent="LeftControlGroup/MarginContainer4"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+max_value = 30.0
+step = 0.1
+show_percentage = false
+
 [node name="RightControlGroup" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 6

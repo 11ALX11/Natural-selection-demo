@@ -15,7 +15,7 @@ var mobs_count = 0
 func _ready():
 	$HUD/StartMenu.grab_focus()
 	
-	# export vals
+	# Export values
 	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = "Max mobs: " + str(max_mobs)
 	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider.value = max_mobs
 	
@@ -31,6 +31,8 @@ func _ready():
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = "Circle velocity change\nevery " + str(circle_velocity_change_time) + " s"
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider.value = circle_velocity_change_time
 	$World.circle_velocity_change_time = circle_velocity_change_time
+	$HUD/InWorldUI.circle_velocity_change_time = circle_velocity_change_time
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer4/CircleProgressBar.max_value = circle_velocity_change_time
 	
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(circle_random_factor) + " px/s"
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider.value = circle_random_factor
@@ -137,5 +139,11 @@ func _on_in_world_ui_reset():
 
 func _on_in_world_ui_circle_change():
 	$World.change_circle_velocity()
+	# Reset timer and circle progress bar
 	$World/LifeZone/Timer.start(circle_velocity_change_time)
+	reset_circle_progress_bar()
 
+
+func reset_circle_progress_bar():
+	$HUD/InWorldUI.circle_velocity_change_time = circle_velocity_change_time
+	$HUD/InWorldUI.seconds = 0
