@@ -27,31 +27,37 @@ func _ready():
 		$HUD/StartMenu._on_en_button_pressed()
 	
 	# Export values
-	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = tr("Max mobs: {value}").format({value = str(max_mobs)})
+	set_ui_text()
+	
 	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider.value = max_mobs
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/Lifespan.text = tr("Lifespan: {value} s").format({value = str(max_lifespan)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/HSlider.value = max_lifespan
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance.text = tr("Mutation chance: {value}").format({value = str(mutation_chance)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/HSlider.value = mutation_chance
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor.text = tr("Random factor: {value} px/s").format({value = str(random_factor)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/HSlider.value = random_factor
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = tr("Circle velocity change\nevery {value} s").format({value = str(circle_velocity_change_time)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider.value = circle_velocity_change_time
 	$World.circle_velocity_change_time = circle_velocity_change_time
 	$HUD/InWorldUI.circle_velocity_change_time = circle_velocity_change_time
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer4/CircleProgressBar.max_value = circle_velocity_change_time
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = tr("Circle random factor:\n{value} px/s").format({value = str(circle_random_factor)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider.value = circle_random_factor
 	$World.circle_random_factor = circle_random_factor
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(circle_scale)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/HSlider.value = circle_scale
 	$World/LifeZone.scale = Vector2(circle_scale, circle_scale)
+
+
+func set_ui_text():
+	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = tr("Max mobs: {value}").format({value = str(max_mobs)})
+	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/Lifespan.text = tr("Lifespan: {value} s").format({value = str(max_lifespan)})
+	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance.text = tr("Mutation chance: {value}").format({value = str(mutation_chance)})
+	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor.text = tr("Random factor: {value} px/s").format({value = str(random_factor)})
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = tr("Circle velocity change\nevery {value} s").format({value = str(circle_velocity_change_time)})
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = tr("Circle random factor:\n{value} px/s").format({value = str(circle_random_factor)})
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(circle_scale)})
+	
 
 
 func _on_start_menu_start():
@@ -191,3 +197,4 @@ func _on_mob_checker_timer_timeout():
 
 func _on_start_menu_changed_locale(locale):
 	TranslationServer.set_locale(locale)
+	set_ui_text()
