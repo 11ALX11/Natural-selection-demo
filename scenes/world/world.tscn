@@ -17,7 +17,6 @@ visible = false
 motion_mirroring = Vector2(4000, 4000)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(5, 5)
 texture = ExtResource("2_ir575")
 
 [node name="Camera2D" type="Camera2D" parent="."]

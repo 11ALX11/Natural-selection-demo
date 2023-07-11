@@ -7,6 +7,8 @@
 
 [node name="MainSceneNode" type="Node"]
 script = ExtResource("1_uwutl")
+max_mobs = 800
+IS_TIGHT_LIMIT = 2
 
 [node name="World" parent="." instance=ExtResource("3_63ulo")]
 process_mode = 1
