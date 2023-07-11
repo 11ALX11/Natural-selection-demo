@@ -71,7 +71,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Circle velocity change
-every $ s"
+every {value} s"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -98,7 +98,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Circle random factor:
-$ px/s"
+{value} px/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -124,7 +124,7 @@ layout_mode = 2
 [node name="CircleRadius" type="Label" parent="LeftControlGroup/MarginContainer5/CircleRadiusGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Circle radius scale: $"
+text = "Circle radius scale: {value}"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -187,7 +187,7 @@ theme_override_constants/margin_bottom = 12
 [node name="MobsCount" type="Label" parent="RightControlGroup/MarginContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Mobs: 0"
+text = "Mobs: {value}"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -204,7 +204,7 @@ layout_mode = 2
 [node name="MaxMobs" type="Label" parent="RightControlGroup/MarginContainer2/MaxMobsGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Max mobs: $"
+text = "Max mobs: {value}"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -230,7 +230,7 @@ layout_mode = 2
 [node name="Lifespan" type="Label" parent="RightControlGroup/MarginContainer3/LifespanGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Lifespan: $ s"
+text = "Lifespan: {value} s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,7 +254,7 @@ layout_mode = 2
 [node name="MutationChance" type="Label" parent="RightControlGroup/MarginContainer4/MutationChanceGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Mutation chance: $"
+text = "Mutation chance: {value}"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -277,7 +277,7 @@ layout_mode = 2
 [node name="RandomFactor" type="Label" parent="RightControlGroup/MarginContainer5/RandomFactorGroup"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Random factor: $ px/s"
+text = "Random factor: {value} px/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 

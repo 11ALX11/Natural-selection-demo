@@ -31,3 +31,9 @@ ui_refresh={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://locale/en.po", "res://locale/ru.po")
+locale/translations_pot_files=PackedStringArray("res://scenes/start_menu/start_menu.tscn", "res://scenes/in_world_ui/in_world_ui.tscn", "res://scenes/main_scene_node.gd", "res://scenes/in_world_ui/in_world_ui.gd")

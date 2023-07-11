@@ -1,0 +1,92 @@
+# LANGUAGE translation for Natural-selection-demo for the following files:
+# res://scenes/start_menu/start_menu.tscn
+# res://scenes/in_world_ui/in_world_ui.tscn
+# res://scenes/main_scene_node.gd
+# res://scenes/in_world_ui/in_world_ui.gd
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Natural-selection-demo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: scenes/start_menu/start_menu.tscn
+msgid "Start"
+msgstr "Start"
+
+#: scenes/start_menu/start_menu.tscn
+msgid "Quit"
+msgstr "Quit"
+
+#: scenes/start_menu/start_menu.tscn
+msgid ""
+"Shortcuts:\n"
+"\n"
+"Enter/Space: Start\n"
+"Esc: Back/Quit\n"
+"F5/Ctrl+R: Reset simulation"
+msgstr ""
+"Shortcuts:\n"
+"\n"
+"Enter/Space: Start\n"
+"Esc: Back/Quit\n"
+"F5/Ctrl+R: Reset simulation"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Back"
+msgstr "Back"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid ""
+"Circle velocity change\n"
+"every {value} s"
+msgstr ""
+"Circle velocity change\n"
+"every {value} s"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid ""
+"Circle random factor:\n"
+"{value} px/s"
+msgstr ""
+"Circle random factor:\n"
+"{value} px/s"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Circle radius scale: {value}"
+msgstr "Circle radius scale: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Change circle velocity"
+msgstr "Change circle velocity"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Mobs: {value}"
+msgstr "Mobs: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Max mobs: {value}"
+msgstr "Max mobs: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Lifespan: {value} s"
+msgstr "Lifespan: {value} s"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Mutation chance: {value}"
+msgstr "Mutation chance: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Random factor: {value} px/s"
+msgstr "Random factor: {value} px/s"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Reset simulation"
+msgstr "Reset simulation"

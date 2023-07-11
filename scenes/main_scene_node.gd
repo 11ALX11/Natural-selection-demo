@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var mob_scene: PackedScene = preload("res://scenes/world/mob/mob.tscn")
 
 @export var max_mobs = 1000
@@ -16,35 +17,42 @@ var mob_size: float = mob_scene.instantiate().get_node("CollisionShape2D").shape
 
 @export var IS_TIGHT_LIMIT: int = 4 # Max amount of mobs packed together
 
+
 func _ready():
 	$HUD/StartMenu.grab_focus()
+	var locale = TranslationServer.get_locale()
+	if locale == "ru_RU":
+		$HUD/StartMenu._on_ru_button_pressed()
+	if locale == "en_US":
+		$HUD/StartMenu._on_en_button_pressed()
 	
 	# Export values
-	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = "Max mobs: " + str(max_mobs)
+	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs.text = tr("Max mobs: {value}").format({value = str(max_mobs)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer2/MaxMobsGroup/HSlider.value = max_mobs
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/Lifespan.text = "Lifespan: " + str(max_lifespan) + " s"
+	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/Lifespan.text = tr("Lifespan: {value} s").format({value = str(max_lifespan)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer3/LifespanGroup/HSlider.value = max_lifespan
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance.text = "Mutation chance: " + str(mutation_chance)
+	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance.text = tr("Mutation chance: {value}").format({value = str(mutation_chance)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer4/MutationChanceGroup/HSlider.value = mutation_chance
 	
-	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor.text = "Random factor: " + str(random_factor) + " px/s"
+	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor.text = tr("Random factor: {value} px/s").format({value = str(random_factor)})
 	$HUD/InWorldUI/RightControlGroup/MarginContainer5/RandomFactorGroup/HSlider.value = random_factor
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = "Circle velocity change\nevery " + str(circle_velocity_change_time) + " s"
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = tr("Circle velocity change\nevery {value} s").format({value = str(circle_velocity_change_time)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider.value = circle_velocity_change_time
 	$World.circle_velocity_change_time = circle_velocity_change_time
 	$HUD/InWorldUI.circle_velocity_change_time = circle_velocity_change_time
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer4/CircleProgressBar.max_value = circle_velocity_change_time
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(circle_random_factor) + " px/s"
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = tr("Circle random factor:\n{value} px/s").format({value = str(circle_random_factor)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider.value = circle_random_factor
 	$World.circle_random_factor = circle_random_factor
 	
-	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = "Circle radius scale: " + str(circle_scale)
+	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(circle_scale)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/HSlider.value = circle_scale
 	$World/LifeZone.scale = Vector2(circle_scale, circle_scale)
+
 
 func _on_start_menu_start():
 	$HUD/StartMenu.hide()
@@ -87,6 +95,7 @@ func start_demo():
 	reset_circle_progress_bar()
 	$World.launch_circle()
 
+
 func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
 	var x_dir = (randi() % 2) - 1
 	var y_dir = (randi() % 2) - 1
@@ -95,7 +104,7 @@ func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
 	var cnt: int = 0
 	var mobs: Array[Node] = get_tree().get_nodes_in_group("Mob")
 	var is_tight = mobs.any(
-		func(node):
+		func(node: RigidBody2D):
 			if node.position.distance_squared_to(spawn_position) <= mob_size*mob_size:
 				cnt += 1
 			return cnt >= IS_TIGHT_LIMIT # True, if it is too tight
@@ -123,7 +132,7 @@ func spawn_mob(parent_pos: Vector2, parent_vel: Vector2):
 
 func update_mobs_count():
 	mobs_count = get_tree().get_nodes_in_group("mobs").size()
-	get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = "Mobs: " + str(mobs_count)
+	get_node("HUD/InWorldUI/RightControlGroup/MarginContainer/MobsCount").text = tr("Mobs: {value}").format({value = str(mobs_count)})
 
 
 func _on_mob_died():
@@ -178,3 +187,7 @@ func reset_circle_progress_bar():
 
 func _on_mob_checker_timer_timeout():
 	update_mobs_count()
+
+
+func _on_start_menu_changed_locale(locale):
+	TranslationServer.set_locale(locale)

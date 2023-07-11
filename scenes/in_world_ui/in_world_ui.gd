@@ -39,30 +39,30 @@ func _on_change_circle_velocity_pressed():
 
 
 func _on_max_mobs_h_slider_value_changed(value):
-	get_node("RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs").text = "Max mobs: " + str(value)
+	get_node("RightControlGroup/MarginContainer2/MaxMobsGroup/MaxMobs").text = tr("Max mobs: {value}").format({value = str(value)})
 	max_mobs_change.emit(value)
 
 func _on_lifespan_h_slider_value_changed(value):
-	get_node("RightControlGroup/MarginContainer3/LifespanGroup/Lifespan").text = "Lifespan: " + str(value) + " s"
+	get_node("RightControlGroup/MarginContainer3/LifespanGroup/Lifespan").text = tr("Lifespan: {value} s").format({value = str(value) })
 	lifespan_change.emit(value)
 
 func _on_mutation_chance_h_slider_value_changed(value):
-	get_node("RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance").text = "Mutation chance: " + str(value)
+	get_node("RightControlGroup/MarginContainer4/MutationChanceGroup/MutationChance").text = tr("Mutation chance: {value}").format({value = str(value)})
 	mutation_chance_change.emit(value)
 
 func _on_random_factor_h_slider_value_changed(value):
-	get_node("RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor").text = "Random factor: " + str(value) + " px/s"
+	get_node("RightControlGroup/MarginContainer5/RandomFactorGroup/RandomFactor").text = tr("Random factor: {value} px/s").format({value = str(value)})
 	random_factor_change.emit(value)
 
 
 func _on_circle_velocity_time_change_h_slider_value_changed(value):
-	$LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = "Circle velocity change\nevery " + str(value) + " s"
+	$LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = tr("Circle velocity change\nevery {value} s").format({value = str(value)})
 	circle_velocity_time_change.emit(value)
 
 func _on_circle_random_factor_h_slider_value_changed(value):
-	$LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = "Circle random factor:\n" + str(value) + " px/s"
+	$LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = tr("Circle random factor:\n{value} px/s").format({value = str(value)})
 	circle_random_factor.emit(value)
 
 func _on_circle_radius_h_slider_value_changed(value):
-	$LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = "Circle radius scale: " + str(value)
+	$LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(value)})
 	circle_scale.emit(value)
