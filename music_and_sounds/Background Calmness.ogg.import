@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdjanps857j53"
+path="res://.godot/imported/Background Calmness.ogg-96b7c96a1f73e729a36dc2dee4cb1b67.oggvorbisstr"
+
+[deps]
+
+source_file="res://music_and_sounds/Background Calmness.ogg"
+dest_files=["res://.godot/imported/Background Calmness.ogg-96b7c96a1f73e729a36dc2dee4cb1b67.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

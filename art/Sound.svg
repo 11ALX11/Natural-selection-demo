@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb">
+ <g fill="none" stroke-linecap="round">
+  <g transform="matrix(.47739 0 0 .48494 .20637 .26345)" stroke="#fff" stroke-linejoin="round" stroke-width="1.5346">
+   <path d="m13.229 16.933c1.893-2.2362 2.4313-4.6846 0-7.6724" style="paint-order:normal"/>
+   <path d="m17.065 5.4242c4.0098 4.8217 4.1627 9.8484 0 15.345" style="paint-order:normal"/>
+   <path d="m20.902 24.605c6.0824-8.7535 5.1655-16.172 0-23.017" style="paint-order:normal"/>
+   <path d="m9.393 20.769-3.8362-3.8362h-3.8362v-7.6724h3.8362l3.8362-3.8362z" style="paint-order:normal"/>
+  </g>
+  <g transform="matrix(.89957 0 0 .90044 1.9929 .65855)" stroke-linejoin="round" stroke-width=".8204">
+   <path d="m19.741 8.6816c1.0041-1.2049 1.2896-2.5242 0-4.1341" stroke="#fff" style="paint-order:normal"/>
+   <path d="m21.775 2.4805c2.1269 2.5981 2.208 5.3066 0 8.2682" stroke="#fff" style="paint-order:normal"/>
+   <path d="m23.81 12.816c3.2263-4.7166 2.7399-8.7141 0-12.402" stroke="#9b9b9b" stroke-opacity=".5" style="paint-order:normal"/>
+   <path d="m17.706 10.749-2.0348-2.0671h-2.0348v-4.1341h2.0348l2.0348-2.0671z" stroke="#fff" style="paint-order:normal"/>
+  </g>
+  <g transform="matrix(.89957 0 0 .90044 .66435 1.9756)" stroke-linejoin="round" stroke-width=".8204">
+   <path d="m6.5115 21.911c1.0041-1.2049 1.2896-2.5242 0-4.1341" stroke="#fff" style="paint-order:normal"/>
+   <path d="m8.5463 15.71c2.1269 2.5981 2.208 5.3066 0 8.2682" stroke="#9b9b9b" stroke-opacity=".5" style="paint-order:normal"/>
+   <path d="m10.581 26.045c3.2263-4.7166 2.7399-8.7141 0-12.402" stroke="#9b9b9b" stroke-opacity=".5" style="paint-order:normal"/>
+   <path d="m4.4766 23.978-2.0348-2.0671h-2.0348v-4.1341h2.0348l2.0348-2.0671z" stroke="#fff" style="paint-order:normal"/>
+  </g>
+  <g stroke="#fff">
+   <path d="m17.921 23.566-1.8305-1.8613h-1.8305v-3.7225h1.8305l1.8305-1.8613z" stroke-linejoin="round" stroke-width=".73837" style="paint-order:normal"/>
+   <path d="m19.844 17.33 5.0271 5.0271" stroke-width=".70128"/>
+   <path d="m24.871 17.33-5.0271 5.0271" stroke-width=".70128"/>
+  </g>
+ </g>
+</svg>

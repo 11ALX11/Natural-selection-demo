@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bithppb1lfp8k"
+path="res://.godot/imported/Background #36 Snowflake.ogg-3e26b7206926bbed170dff3e675e9543.oggvorbisstr"
+
+[deps]
+
+source_file="res://music_and_sounds/Background #36 Snowflake.ogg"
+dest_files=["res://.godot/imported/Background #36 Snowflake.ogg-3e26b7206926bbed170dff3e675e9543.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

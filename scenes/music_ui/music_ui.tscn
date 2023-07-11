@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://gfcrkmil6ar0"]
+
+[ext_resource type="Script" path="res://scenes/music_ui/music_ui.gd" id="1_rohrf"]
+[ext_resource type="Texture2D" uid="uid://dnvkdw7f7thhq" path="res://art/Sound.svg" id="2_p4ufp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj6t8"]
+atlas = ExtResource("2_p4ufp")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38q2f"]
+atlas = ExtResource("2_p4ufp")
+region = Rect2(50, 50, 50, 50)
+
+[node name="MusicUI" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_rohrf")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -302.0
+offset_right = 74.0
+grow_vertical = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_hj6t8")
+texture_pressed = SubResource("AtlasTexture_38q2f")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VSlider" type="VSlider" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+min_value = -30.0
+max_value = 10.0
+step = 0.25
+value = -10.0
+
+[connection signal="toggled" from="VBoxContainer/MarginContainer/TextureButton" to="." method="_on_texture_button_toggled"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/VSlider" to="." method="_on_v_slider_value_changed"]

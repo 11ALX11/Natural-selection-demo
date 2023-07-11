@@ -23,7 +23,7 @@ msgstr "Start"
 
 #: scenes/start_menu/start_menu.tscn
 msgid "Quit"
-msgstr "Quit"
+msgstr " Quit "
 
 #: scenes/start_menu/start_menu.tscn
 msgid ""

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsodcaghps1c0"]
+[gd_scene load_steps=9 format=3 uid="uid://dsodcaghps1c0"]
 
 [ext_resource type="PackedScene" uid="uid://b2ke2i1fa6m3k" path="res://scenes/start_menu/start_menu.tscn" id="1_nftdd"]
 [ext_resource type="Script" path="res://scenes/main_scene_node.gd" id="1_uwutl"]
 [ext_resource type="PackedScene" uid="uid://csakd5xi2rakc" path="res://scenes/world/world.tscn" id="3_63ulo"]
+[ext_resource type="AudioStream" uid="uid://bithppb1lfp8k" path="res://music_and_sounds/Background #36 Snowflake.ogg" id="5_e10ea"]
 [ext_resource type="PackedScene" uid="uid://kqsvu0bvql1e" path="res://scenes/in_world_ui/in_world_ui.tscn" id="5_gj885"]
+[ext_resource type="PackedScene" uid="uid://gfcrkmil6ar0" path="res://scenes/music_ui/music_ui.tscn" id="5_kjyis"]
+[ext_resource type="AudioStream" uid="uid://bdjanps857j53" path="res://music_and_sounds/Background Calmness.ogg" id="6_qo2w8"]
+[ext_resource type="AudioStream" uid="uid://cj6xrrfx5em57" path="res://music_and_sounds/Background Chicago.ogg" id="7_5cst8"]
 
 [node name="MainSceneNode" type="Node"]
 script = ExtResource("1_uwutl")
@@ -22,8 +26,24 @@ metadata/_edit_lock_ = true
 [node name="InWorldUI" parent="HUD" instance=ExtResource("5_gj885")]
 visible = false
 
+[node name="MusicUI" parent="HUD" instance=ExtResource("5_kjyis")]
+
 [node name="MobCheckerTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="BackgroundMusicGroup" type="Node" parent="."]
+
+[node name="1" type="AudioStreamPlayer" parent="BackgroundMusicGroup"]
+stream = ExtResource("5_e10ea")
+volume_db = -10.0
+
+[node name="2" type="AudioStreamPlayer" parent="BackgroundMusicGroup"]
+stream = ExtResource("6_qo2w8")
+volume_db = -10.0
+
+[node name="3" type="AudioStreamPlayer" parent="BackgroundMusicGroup"]
+stream = ExtResource("7_5cst8")
+volume_db = -10.0
 
 [connection signal="circle_velocity_changed" from="World" to="." method="reset_circle_progress_bar"]
 [connection signal="life_zone_exit" from="World" to="." method="_on_world_life_zone_exit"]
@@ -40,4 +60,8 @@ autostart = true
 [connection signal="mutation_chance_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_mutation_chance_change"]
 [connection signal="random_factor_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_random_factor_change"]
 [connection signal="reset" from="HUD/InWorldUI" to="." method="_on_in_world_ui_reset"]
+[connection signal="sound_scale_changed" from="HUD/MusicUI" to="." method="_on_music_ui_sound_scale_changed"]
 [connection signal="timeout" from="MobCheckerTimer" to="." method="_on_mob_checker_timer_timeout"]
+[connection signal="finished" from="BackgroundMusicGroup/1" to="." method="play_background_music"]
+[connection signal="finished" from="BackgroundMusicGroup/2" to="." method="play_background_music"]
+[connection signal="finished" from="BackgroundMusicGroup/3" to="." method="play_background_music"]

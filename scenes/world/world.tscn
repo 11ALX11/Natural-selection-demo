@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://csakd5xi2rakc"]
+[gd_scene load_steps=6 format=3 uid="uid://csakd5xi2rakc"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_8jqv5"]
 [ext_resource type="Texture2D" uid="uid://cajjovlwq7wdp" path="res://art/circle.svg" id="2_ihd11"]
 [ext_resource type="Texture2D" uid="uid://bmtkicrqvvvno" path="res://art/background.svg" id="2_ir575"]
+[ext_resource type="AudioStream" uid="uid://ct0pxc1qyhnfb" path="res://music_and_sounds/boom-geomorphism-sfx.ogg" id="4_5g3rt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms33t"]
 radius = 492.0
@@ -23,7 +24,7 @@ texture = ExtResource("2_ir575")
 
 [node name="LifeZone" type="Area2D" parent="."]
 scale = Vector2(0.8, 0.8)
-priority = 1.0
+priority = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZone"]
@@ -35,6 +36,10 @@ texture = ExtResource("2_ihd11")
 
 [node name="Timer" type="Timer" parent="LifeZone"]
 wait_time = 30.0
+
+[node name="SpawnSFX" type="AudioStreamPlayer2D" parent="LifeZone"]
+stream = ExtResource("4_5g3rt")
+volume_db = -7.0
 
 [connection signal="body_exited" from="LifeZone" to="." method="_on_life_zone_body_exited"]
 [connection signal="timeout" from="LifeZone/Timer" to="." method="_on_life_zone_timer_timeout"]

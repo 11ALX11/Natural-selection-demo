@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj6xrrfx5em57"
+path="res://.godot/imported/Background Chicago.ogg-a0d0afe6a2602350321ecba95d48f206.oggvorbisstr"
+
+[deps]
+
+source_file="res://music_and_sounds/Background Chicago.ogg"
+dest_files=["res://.godot/imported/Background Chicago.ogg-a0d0afe6a2602350321ecba95d48f206.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

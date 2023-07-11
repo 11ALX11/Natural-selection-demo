@@ -20,11 +20,14 @@ var mob_size: float = mob_scene.instantiate().get_node("CollisionShape2D").shape
 
 func _ready():
 	$HUD/StartMenu.grab_focus()
+	
 	var locale = TranslationServer.get_locale()
 	if locale == "ru_RU":
 		$HUD/StartMenu._on_ru_button_pressed()
 	if locale == "en_US":
 		$HUD/StartMenu._on_en_button_pressed()
+	
+	play_background_music()
 	
 	# Export values
 	set_ui_text()
@@ -97,6 +100,7 @@ func start_demo():
 	spawn_mob(starter_pos, Vector2(0, 10))
 	
 	update_mobs_count()
+	$World/LifeZone/SpawnSFX.play()
 	
 	reset_circle_progress_bar()
 	$World.launch_circle()
@@ -198,3 +202,25 @@ func _on_mob_checker_timer_timeout():
 func _on_start_menu_changed_locale(locale):
 	TranslationServer.set_locale(locale)
 	set_ui_text()
+
+
+var last_music_id = 0
+func play_background_music():
+	var id = (randi() % 3) + 1
+	while last_music_id == id:
+		id = (randi() % 3) + 1
+		
+	get_node("BackgroundMusicGroup/" + str(id)).play()
+
+
+func _on_music_ui_sound_scale_changed(value):
+	var musics: Array = $BackgroundMusicGroup.get_children()
+	musics.all(
+		func(music: AudioStreamPlayer):
+			if value > -30:
+				music.volume_db = value
+			else :
+				music.volume_db = -80	
+			
+			return true
+	)
