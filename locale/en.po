@@ -23,7 +23,7 @@ msgstr "Start"
 
 #: scenes/start_menu/start_menu.tscn
 msgid "Quit"
-msgstr " Quit "
+msgstr "Quit"
 
 #: scenes/start_menu/start_menu.tscn
 msgid ""
@@ -39,53 +39,65 @@ msgstr ""
 "Esc: Back/Quit\n"
 "F5/Ctrl+R: Reset simulation"
 
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Max mobs: {value}"
+msgstr "Max mobs: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Lifespan: {value} s"
+msgstr "Lifespan: {value} s"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Mutation chance: {value}"
+msgstr "Mutation chance: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Random factor: {value} px/s"
+msgstr "Random factor: {value} px/s"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid ""
+"Circle velocity change\n"
+"every {value} s"
+msgstr ""
+"Circle velocity change\n"
+"every {value} s"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid ""
+"Circle random factor:\n"
+"{value} px/s"
+msgstr ""
+"Circle random factor:\n"
+"{value} px/s"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Circle radius scale: {value}"
+msgstr "Circle radius scale: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Zoom: {value}"
+msgstr "Zoom: {value}"
+
 #: scenes/in_world_ui/in_world_ui.tscn
 msgid "Back"
 msgstr "Back"
 
 #: scenes/in_world_ui/in_world_ui.tscn
-msgid ""
-"Circle velocity change\n"
-"every {value} s"
-msgstr ""
-"Circle velocity change\n"
-"every {value} s"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid ""
-"Circle random factor:\n"
-"{value} px/s"
-msgstr ""
-"Circle random factor:\n"
-"{value} px/s"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Circle radius scale: {value}"
-msgstr "Circle radius scale: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
 msgid "Change circle velocity"
 msgstr "Change circle velocity"
 
-#: scenes/in_world_ui/in_world_ui.tscn
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
 msgid "Mobs: {value}"
 msgstr "Mobs: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Max mobs: {value}"
-msgstr "Max mobs: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Lifespan: {value} s"
-msgstr "Lifespan: {value} s"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Mutation chance: {value}"
-msgstr "Mutation chance: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Random factor: {value} px/s"
-msgstr "Random factor: {value} px/s"
 
 #: scenes/in_world_ui/in_world_ui.tscn
 msgid "Reset simulation"

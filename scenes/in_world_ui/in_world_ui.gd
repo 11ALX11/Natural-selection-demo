@@ -14,6 +14,7 @@ signal circle_velocity_time_change(value: int)
 signal circle_random_factor(value: int)
 signal circle_scale(value: float)
 
+signal zoom_changed(value: float)
 
 var seconds: float = 0
 var circle_velocity_change_time: int = 30
@@ -66,3 +67,8 @@ func _on_circle_random_factor_h_slider_value_changed(value):
 func _on_circle_radius_h_slider_value_changed(value):
 	$LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(value)})
 	circle_scale.emit(value)
+
+
+func _on_h_slider_value_changed(value):
+	$ZoomGroup/MarginContainer/Label.text = tr("Zoom: {value}").format({value = value})
+	zoom_changed.emit(value)

@@ -40,19 +40,37 @@ msgstr ""
 "Esc: Назад/Выйти\n"
 "F5/Ctrl+R: Перезапустить\nсимуляцию"
 
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Back"
-msgstr "Назад"
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Max mobs: {value}"
+msgstr "Предел мобов: {value}"
 
-#: scenes/in_world_ui/in_world_ui.tscn
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Lifespan: {value} s"
+msgstr "Время жизни {value} сек"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Mutation chance: {value}"
+msgstr "Шанс мутации: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Random factor: {value} px/s"
+msgstr "Случайный фактор:\n {value} пиксели/сек"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
 msgid ""
 "Circle velocity change\n"
 "every {value} s"
 msgstr ""
-"Изменение скорости круга\n"
-"каждые {value} сек"
+"Изменение скорости\n"
+"круга каждые {value} сек"
 
-#: scenes/in_world_ui/in_world_ui.tscn
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
 msgid ""
 "Circle random factor:\n"
 "{value} px/s"
@@ -60,33 +78,27 @@ msgstr ""
 "Случайный фактор круга:\n"
 "{value} пиксели/сек"
 
-#: scenes/in_world_ui/in_world_ui.tscn
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
 msgid "Circle radius scale: {value}"
 msgstr "Размер круга: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
+#: scenes/in_world_ui/in_world_ui.gd
+msgid "Zoom: {value}"
+msgstr "Приближение: {value}"
+
+#: scenes/in_world_ui/in_world_ui.tscn
+msgid "Back"
+msgstr "Назад"
 
 #: scenes/in_world_ui/in_world_ui.tscn
 msgid "Change circle velocity"
 msgstr "Изменить скорость круга"
 
-#: scenes/in_world_ui/in_world_ui.tscn
+#: scenes/in_world_ui/in_world_ui.tscn scenes/main_scene_node.gd
 msgid "Mobs: {value}"
 msgstr "Мобы: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Max mobs: {value}"
-msgstr "Предел мобов: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Lifespan: {value} s"
-msgstr "Время жизни {value} сек"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Mutation chance: {value}"
-msgstr "Шанс мутации: {value}"
-
-#: scenes/in_world_ui/in_world_ui.tscn
-msgid "Random factor: {value} px/s"
-msgstr "Случайный фактор:\n {value} пиксели/сек"
 
 #: scenes/in_world_ui/in_world_ui.tscn
 msgid "Reset simulation"

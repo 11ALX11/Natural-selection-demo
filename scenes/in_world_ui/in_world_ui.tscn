@@ -303,6 +303,48 @@ focus_mode = 0
 shortcut = SubResource("Shortcut_35q56")
 text = "Reset simulation"
 
+[node name="ZoomGroup" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -91.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ZoomGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="ZoomGroup/MarginContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Zoom: {value}"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ZoomGroup"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 24
+
+[node name="HSlider" type="HSlider" parent="ZoomGroup/MarginContainer2"]
+layout_mode = 2
+min_value = 1.0
+max_value = 2.5
+step = 0.01
+value = 1.0
+
 [connection signal="pressed" from="MarginContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="value_changed" from="LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/HSlider" to="." method="_on_circle_velocity_time_change_h_slider_value_changed"]
 [connection signal="value_changed" from="LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/HSlider" to="." method="_on_circle_random_factor_h_slider_value_changed"]
@@ -313,3 +355,4 @@ text = "Reset simulation"
 [connection signal="value_changed" from="RightControlGroup/MarginContainer4/MutationChanceGroup/HSlider" to="." method="_on_mutation_chance_h_slider_value_changed"]
 [connection signal="value_changed" from="RightControlGroup/MarginContainer5/RandomFactorGroup/HSlider" to="." method="_on_random_factor_h_slider_value_changed"]
 [connection signal="pressed" from="RightControlGroup/MarginContainer6/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="value_changed" from="ZoomGroup/MarginContainer2/HSlider" to="." method="_on_h_slider_value_changed"]

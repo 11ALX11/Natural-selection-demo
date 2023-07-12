@@ -60,6 +60,7 @@ volume_db = -10.0
 [connection signal="mutation_chance_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_mutation_chance_change"]
 [connection signal="random_factor_change" from="HUD/InWorldUI" to="." method="_on_in_world_ui_random_factor_change"]
 [connection signal="reset" from="HUD/InWorldUI" to="." method="_on_in_world_ui_reset"]
+[connection signal="zoom_changed" from="HUD/InWorldUI" to="." method="_on_in_world_ui_zoom_changed"]
 [connection signal="sound_scale_changed" from="HUD/MusicUI" to="." method="_on_music_ui_sound_scale_changed"]
 [connection signal="timeout" from="MobCheckerTimer" to="." method="_on_mob_checker_timer_timeout"]
 [connection signal="finished" from="BackgroundMusicGroup/1" to="." method="play_background_music"]
