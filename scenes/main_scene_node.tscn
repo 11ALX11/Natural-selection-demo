@@ -17,6 +17,7 @@ IS_TIGHT_LIMIT = 2
 [node name="World" parent="." instance=ExtResource("3_63ulo")]
 process_mode = 1
 visible = false
+CAMERA_OFFSET_EFFECT_START = 0.8
 metadata/_edit_lock_ = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
