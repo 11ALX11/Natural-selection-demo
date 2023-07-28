@@ -17,6 +17,8 @@ var mob_size: float = mob_scene.instantiate().get_node("CollisionShape2D").shape
 
 @export var IS_TIGHT_LIMIT: int = 4 # Max amount of mobs packed together
 
+var zoom_value: float = 1 # Value for label
+
 
 func _ready():
 	$HUD/StartMenu.grab_focus()
@@ -60,7 +62,7 @@ func set_ui_text():
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer/CircleVelocityTimeChangeGroup/CircleVelocityTimeChange.text = tr("Circle velocity change\nevery {value} s").format({value = str(circle_velocity_change_time)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer2/CircleRandomFactorGroup/CircleRandomFactor.text = tr("Circle random factor:\n{value} px/s").format({value = str(circle_random_factor)})
 	$HUD/InWorldUI/LeftControlGroup/MarginContainer5/CircleRadiusGroup/CircleRadius.text = tr("Circle radius scale: {value}").format({value = str(circle_scale)})
-	$HUD/InWorldUI/ZoomGroup/MarginContainer/Label.text = tr("Zoom: {value}").format({value = "1"})
+	$HUD/InWorldUI/ZoomGroup/MarginContainer/Label.text = tr("Zoom: {value}").format({value = zoom_value})
 	
 
 
@@ -228,4 +230,5 @@ func _on_music_ui_sound_scale_changed(value):
 
 
 func _on_in_world_ui_zoom_changed(value):
+	zoom_value = value
 	$World/Camera2D.zoom = Vector2(value, value)
