@@ -23,7 +23,7 @@ msgstr "Start"
 
 #: scenes/start_menu/start_menu.tscn
 msgid "Quit"
-msgstr "Quit"
+msgstr " Quit " # 't' won't be displayed for some reason without character after it.
 
 #: scenes/start_menu/start_menu.tscn
 msgid ""

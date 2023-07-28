@@ -14,7 +14,7 @@ config/name="Natural-selection-demo"
 run/main_scene="res://scenes/main_scene_node.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-config/icon="res://art/icon.svg"
+config/icon="res://art/circle.svg"
 
 [display]
 
@@ -37,3 +37,7 @@ ui_refresh={
 locale/translation_remaps={}
 locale/translations=PackedStringArray("res://locale/en.po", "res://locale/ru.po")
 locale/translations_pot_files=PackedStringArray("res://scenes/start_menu/start_menu.tscn", "res://scenes/in_world_ui/in_world_ui.tscn", "res://scenes/main_scene_node.gd", "res://scenes/in_world_ui/in_world_ui.gd")
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
